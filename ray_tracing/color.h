@@ -7,6 +7,6 @@
 
 using color = vec3;
 
-void writeColor(std::ostream &out, color pixel_color); 
+void writeColor(std::ostream &out, color pixel_color, size_t samples_per_pixel); 
 
 #endif
