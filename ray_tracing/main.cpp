@@ -10,7 +10,7 @@
 color rayColor(const ray& r, const hittable& world)
 {
 	hit_record rec;
-	if (world.hit(r, 0, infinity, rec))
+	if (world.hit(r, interval(0, infinity), rec))
 			return 0.5 * (rec.normal + color(1, 1, 1));
 
 	vec3 unit_direction = unit_vector(r.direction());
@@ -60,6 +60,7 @@ int main() {
 
     for (int j = 0; j < image_height; ++j) {
 			std::clog << "\rScanlines remaining: " << (image_height - j) << ' ' << std::flush;
+
 			for (int i = 0; i < image_width; ++i) {
 				auto pixel_center = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
 				auto ray_direction = pixel_center - camera_center;
